@@ -106,7 +106,8 @@ function viewComponent(model, repo, branch, version, package, package_path) {
         });
 
         // remove 'package://', 'filepath://', etc
-        meshPath = package + '/share/' + parent_link.visual.geometry.mesh.filename.replace('package://', '')
+        meshPath = package + parent_link.visual.geometry.mesh.filename.replace('package://', '')
+        console.log("Mesh Path:", meshPath);
         parent = addMesh(meshPath, ws_path, origin);
         let axes = new ROS3D.Axes({});
         parent.add(axes);
@@ -119,6 +120,7 @@ function viewComponent(model, repo, branch, version, package, package_path) {
         childLink = getLink(model.link, joint.child.link)
         if (childLink.visual !== undefined) {
             meshPath = package + '/share/' + childLink.visual.geometry.mesh.filename.replace('package://', '')
+            console.log("Mesh Path:", meshPath);
             mesh = addMesh(meshPath, ws_path, getThreePose(joint.origin));
             mesh.add(axes);
             if (childLink.visual.geometry.mesh.scale !== undefined) {

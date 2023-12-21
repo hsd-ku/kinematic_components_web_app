@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    document.getElementById('searchInput').addEventListener('input', filterComponents);
+    var searchInput = document.getElementById('searchInput');
+    if(searchInput){
+        searchInput.addEventListener('input', filterComponents);
+    }
 });
 
 function clearSearch() {
